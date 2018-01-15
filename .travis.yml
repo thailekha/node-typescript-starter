@@ -1,10 +1,16 @@
+dist: trusty
+sudo: false
 language: node_js
 node_js: 6.11.2
+addons:
+  sonarcloud:
+    organization: "thailekha-github" # the key of the org you chose at step #3
+    token:
+      secure: "E6Oc3Lmpb1htMs51zqxo4redVd9DAxZbTeQ+TSQJAZfFofF8kR5GiHgdKNvLdWhmEh5gtGkMRTHGJcw/0idQrCc/DE33PjeuGya77BPxCaeDLWXPS0Z9UsYUf3umiCxPwYLAR7iJbt2GXi+aersGzat/emYexasHVIsezX/lwm9IGheN5khmb65ftBlf4mbKV9CqbnONAULKFoSZMnWtwtLC4+DiH98N2t6BBHe7RY/7DevHONkkmdRsT22vX3ij561j34GJa0xNBWKsZcE5dVuhRtb8+474ydOVCp9zROVHrU+jLxBqHecvPXOyppNk//r1qPgajktSgad0pCitGTVnXPwKMLVWmvSrOljRfV8op/gcBnOb54/q3qp/Tlgk9GjxTlRUyz+LvX36OrPYrXQaNgLY5emSKTxXAQiXu+S526Mv9yRchnMuTHj/G1IqZkWRbKNH/cPGZhkiN3JstakVMF/HP2LzZ2vI/yNdMAs1p8FtIWp1WX8zIx4SDBYDMFk+uqCN0AVbRo4CIOrScspdnFewlnSsNGxWfulTh8MjVL917Uc07Wob9A/Xzh13f/2n5lFa1MMkj6BQldP6jAidh/lS+95ewF/VxOI4kcaClTClK1trW+ARkoHYaSi0vC5Bv0gJypnpiS+zBXUMQEo6PBlonywhVs4kjodrY2M="
 before_install:
 - npm i -g yarn
 install:
 - yarn install
 script:
-- npm test
-after_success:
-- ls -al
+  - npm test
+  - sonar-scanner
