@@ -1,0 +1,10 @@
+language: node_js
+node_js: 6.11.2
+before_install:
+- npm i -g yarn
+install:
+- yarn install
+script:
+- npm test
+after_success:
+- ls -al
